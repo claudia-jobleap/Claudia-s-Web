@@ -16,7 +16,10 @@ export default function FilmGrainBackground() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext("2d")
+    // Capture as non-nullable so inner functions satisfy TypeScript
+    const el: HTMLCanvasElement = canvas
+
+    const ctx = el.getContext("2d")
     if (!ctx) return
 
     const offscreen = document.createElement("canvas")
@@ -26,10 +29,10 @@ export default function FilmGrainBackground() {
     const t0   = Date.now()
 
     function resize() {
-      canvas.width  = window.innerWidth
-      canvas.height = window.innerHeight
-      offscreen.width  = Math.ceil(canvas.width  * GRAIN_SCALE)
-      offscreen.height = Math.ceil(canvas.height * GRAIN_SCALE)
+      el.width  = window.innerWidth
+      el.height = window.innerHeight
+      offscreen.width  = Math.ceil(el.width  * GRAIN_SCALE)
+      offscreen.height = Math.ceil(el.height * GRAIN_SCALE)
       gCtx = offscreen.getContext("2d")
       if (gCtx) generateGrain()
     }
@@ -66,13 +69,13 @@ export default function FilmGrainBackground() {
 
       // Slow, smooth sinusoidal drift — almost imperceptible
       const t  = (Date.now() - t0) / 1000
-      const dx = Math.sin(t * DRIFT_SPEED)        * canvas.width  * 0.007
-      const dy = Math.cos(t * DRIFT_SPEED * 0.61) * canvas.height * 0.005
+      const dx = Math.sin(t * DRIFT_SPEED)        * el.width  * 0.007
+      const dy = Math.cos(t * DRIFT_SPEED * 0.61) * el.height * 0.005
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, el.width, el.height)
       ctx.save()
       ctx.translate(dx, dy)
-      ctx.drawImage(offscreen, 0, 0, canvas.width, canvas.height)
+      ctx.drawImage(offscreen, 0, 0, el.width, el.height)
       ctx.restore()
     }
 
