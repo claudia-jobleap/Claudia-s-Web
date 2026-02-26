@@ -1,13 +1,5 @@
-import Header from "./components/Header";
-import Hero from "./components/Hero";
+import ComingSoonPage from "./components/ComingSoonPage";
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-      </main>
-    </>
-  );
+  return <ComingSoonPage />;
 }

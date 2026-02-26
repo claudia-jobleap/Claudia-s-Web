@@ -12,10 +12,10 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-serif text-2xl font-medium tracking-tight text-[var(--text-primary)] transition-opacity hover:opacity-80 md:text-[26px]"
+          className="font-sans text-2xl font-medium tracking-tight text-[var(--text-primary)] transition-opacity hover:opacity-80 md:text-[26px]"
           aria-label="Inicio"
         >
-          G
+          CJ
         </Link>
 
         {/* Navigation */}
@@ -24,7 +24,7 @@ export default function Header() {
             <Link
               key={href}
               href={href}
-              className={`relative font-serif text-[15px] tracking-wide text-[var(--text-primary)] transition-opacity hover:opacity-80 md:text-base ${
+              className={`relative font-sans text-[15px] tracking-wide text-[var(--text-primary)] transition-opacity hover:opacity-80 md:text-base ${
                 active ? "font-medium" : ""
               }`}
             >
@@ -39,7 +39,7 @@ export default function Header() {
           ))}
           <Link
             href="/contact"
-            className="rounded-full border border-[var(--text-primary)] bg-[var(--page-bg)] px-5 py-2.5 font-serif text-[15px] tracking-wide text-[var(--text-primary)] transition-colors hover:bg-[var(--text-primary)] hover:text-[var(--page-bg)] md:text-base"
+            className="rounded-full border border-[var(--text-primary)] bg-[var(--page-bg)] px-5 py-2.5 font-sans text-[15px] tracking-wide text-[var(--text-primary)] transition-colors hover:bg-[var(--text-primary)] hover:text-[var(--page-bg)] md:text-base"
           >
             Contact Me
           </Link>
